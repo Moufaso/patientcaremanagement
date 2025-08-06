@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Search Labs by Department</h2>
+
+  <form (submit)="fetchLabs(); $event.preventDefault()">
+    <input
+      type="text"
+      [(ngModel)]="deptName"
+      name="deptName"
+      placeholder="Enter Department Name"
+      required
+    />
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- <p *ngIf="loading">Loading…</p> -->
+  <p *ngIf="error" class="text-danger">{{ error }}</p>
+
+  <!-- async pipe guarantees change-detection -->
+  <ng-container *ngIf="labs$ | async as labs">
+    <!-- <p>labs.length: {{ labs.length }}</p> -->
+
+    <table class="bordered-table" *ngIf="labs.length">
+      <thead>
+        <tr>
+          <th>Patient</th>
+          <th>Nurse</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Test</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lab of labs">
+          <td>{{ lab.patientName }}</td>
+          <td>{{ lab.nurseName }}</td>
+          <td>{{ lab.date }}</td>
+          <td>{{ lab.time }}</td>
+          <td>{{ lab.test }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p *ngIf="searchPerformed && !loading && labs.length === 0 && !error">
+      No labs found for the given department.
+    </p>
+  </ng-container>
+</div>

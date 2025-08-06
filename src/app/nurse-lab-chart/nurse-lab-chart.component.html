@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <div class="container">
+      <h2>Lab Counts per Nurse</h2>
+
+      <ngx-charts-bar-vertical
+        [results]="chartData"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="false"
+        [showDataLabel]="true"
+        [animations]="true"
+        [barPadding]="10"
+        [roundEdges]="true"
+      >
+      </ngx-charts-bar-vertical>
+
+      <!-- TEMP DEBUG OUTPUT -->
+      <!-- <pre>{{ chartData | json }}</pre> -->
+    </div>
+  </div>
+  <div class="col"></div>
+</div>

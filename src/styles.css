@@ -1,2 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/* Global table style */
+.bordered-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.bordered-table th,
+.bordered-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.bordered-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+ngx-charts-pie-chart {
+  display: block;
+  margin: auto;
+}
+
+/* Optional global style to ensure chart renders cleanly */
+/* ngx-charts-pie-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+} */

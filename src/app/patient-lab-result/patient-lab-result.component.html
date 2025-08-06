@@ -1,0 +1,53 @@
+<div class="container" style="margin-left: 0%; margin-right: 0%">
+  <h2>Search Lab Results by Patient</h2>
+
+  <form (submit)="fetch(); $event.preventDefault()">
+    <input
+      type="text"
+      [(ngModel)]="patientName"
+      name="patientName"
+      placeholder="Enter Patient Name"
+      required
+    />
+    <button type="submit">Search</button>
+
+    <!-- <label style="margin-left: 12px; font-size: 0.9rem">
+      <input type="checkbox" [(ngModel)]="showDebug" name="showDebug" />
+      Show debug
+    </label> -->
+  </form>
+
+  <p *ngIf="loading">Loading…</p>
+  <p *ngIf="error" class="text-danger">{{ error }}</p>
+
+  <ng-container *ngIf="data$ | async as rows">
+    <table class="bordered-table" *ngIf="rows.length">
+      <thead>
+        <tr>
+          <th>Nurse</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Test</th>
+          <th>Result</th>
+          <th *ngIf="showDebug">labId</th>
+          <th *ngIf="showDebug">nurseId</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of rows">
+          <td>{{ r.nurseName }}</td>
+          <td>{{ r.date }}</td>
+          <td>{{ r.time }}</td>
+          <td>{{ r.test }}</td>
+          <td>{{ r.result }}</td>
+          <td *ngIf="showDebug">{{ r._debug?.labId }}</td>
+          <td *ngIf="showDebug">{{ r._debug?.nurseId }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p *ngIf="searchPerformed && !loading && rows.length === 0 && !error">
+      No lab results found for the given patient.
+    </p>
+  </ng-container>
+</div>

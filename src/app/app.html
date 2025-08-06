@@ -1,5 +1,40 @@
-<app-patient-prescripton></app-patient-prescripton>
-<app-patient-lab-result></app-patient-lab-result>
-<app-department-appointment></app-department-appointment>
-<app-department-lab></app-department-lab>
-<router-outlet />
+<!-- src/app/app.html -->
+<div class="container">
+  <hr />
+
+  <h1>Patient Care Dashboard by Saman & Kaveh</h1>
+
+  <hr />
+
+  <section>
+    <app-department-appointment></app-department-appointment>
+  </section>
+  <section>
+    <hr />
+
+    <app-department-lab></app-department-lab>
+  </section>
+  <hr />
+
+  <section>
+    <app-patient-prescription></app-patient-prescription>
+  </section>
+  <hr />
+
+  <section>
+    <app-patient-lab-result></app-patient-lab-result>
+  </section>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <section>
+        <app-nurse-lab-chart></app-nurse-lab-chart>
+      </section>
+    </div>
+    <div class="col">
+      <section>
+        <app-appointment-department-chart></app-appointment-department-chart>
+      </section>
+    </div>
+  </div>
+</div>
